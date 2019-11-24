@@ -16,6 +16,9 @@ sys.stdin=f
 ##################################
 # %%
 # 以下ペースト可
-num_list = [int(item) for item in input().split()]
-print('A', num_list)
+input_day = input()
+
+weeks = {'SUN':7 ,'MON': 6,'TUE': 5, 'WED': 4, 'THU': 3,'FRI': 2, 'SAT':1}
+
+print(weeks[input_day])
 

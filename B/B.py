@@ -16,6 +16,14 @@ sys.stdin=f
 ##################################
 # %%
 # 以下ペースト可
-num_list = [int(item) for item in input().split()]
-print('B', num_list)
+import string
+num = int(input())
+S = [i for i in input()]
+res = ''
+abc_list = [i for i in string.ascii_uppercase]
 
+for i in S:
+    new_index = (abc_list.index(i) + num ) % 26
+    res += abc_list[new_index]
+
+print(res)
