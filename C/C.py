@@ -16,43 +16,28 @@ sys.stdin=f
 ##################################
 # %%
 # 以下ペースト可
-
-import math
-
 A, B, X = [int(item) for item in input().split()]
-
-res = 0
 res_list = []
-delta = 10**9 // 4
-N= 10**9 // 2
-
+left = 1 -1
+right = 10 ** 9 + 1
 
 is_search = True
 
 while is_search:
+    N = (left + right)//2
     res = A * N + B * len(str(N))
+
     if res > X:
-        N = N -delta
+        right = N
     elif res <= X:
         res_list.append(N)
-        N = N + delta
+        left = N
 
-    if delta <= 0:
-        break
+    if right - left <= 1:
+        is_search = False
 
-    delta = delta // 2 
-
-new_res_list = []
-for i in range(N - 1000, N + 1000):
-    res = A * i + B * len(str(i))
-    if res <= X:
-        new_res_list.append(i)
-
-
-if new_res_list == [] or max(new_res_list) <1:
+if res_list == []:
     print(0)
 else:
-    if 1<= max(new_res_list) < 10**9:
-        print(max(new_res_list))
-    else:
-        print(10**9)
+    print(max(res_list))
+
